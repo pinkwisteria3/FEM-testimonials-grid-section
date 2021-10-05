@@ -1,0 +1,151 @@
+@import 'utilities';
+@import 'variables';
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    max-width:375px;
+    width:100%;
+    /*min-height:100vh;*/
+    background:$clr-light-grayish-blue;
+    color:$clr-white;
+    font-size:rem(13px);
+    font-family:$font-family;
+    margin:0 auto;
+}
+
+.container{
+    max-width:87.2vw;
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:auto;
+    gap:1.5rem;
+    margin:0 auto;
+    margin-top:rem(71px);
+}
+h1{
+    display:none;
+}
+.card{
+    border-radius:0.5rem;
+    padding:rem(28px) rem(32px);
+
+    &:nth-child(1){
+        background:$clr-moderate-violet url('../images/bg-pattern-quotation.svg') no-repeat top 0 right 25px;
+    }
+    &:nth-child(2){
+        background:$clr-very-dark-grayish-blue;
+    }
+    &:nth-child(3){
+        background:$clr-white;
+    }
+    &:nth-child(4){
+        background:$clr-very-dark-blackish-blue;
+    }
+    &:nth-child(5){
+        background:$clr-white;
+    }
+    &:nth-child(3),&:nth-child(5){
+       .card-top, .review-header,.review-body{
+        color:$clr-very-dark-grayish-blue;
+       }
+    }
+    &:nth-child(1),&:nth-child(4){
+        .card-top{
+            img{
+                border:2px solid #A775F1;
+            }
+        }
+    }
+    .card-top{
+        display:flex;
+        align-items:center;
+        img{
+            width:rem(28px);
+            height:rem(28px);
+            border-radius:50%;
+            margin-right:1rem;
+        }
+        h2{
+            margin:0;
+            font-size:rem(13px);
+            line-height:rem(13px);
+            max-width:263px;
+        }
+        p{
+            margin:0;
+            opacity:0.5;
+        }
+    }
+    .review-header{
+        font-size:rem(20px);
+        font-weight:600;
+        margin:1rem 0;
+    }
+    .review-body{
+        font-weight:500;
+        line-height:rem(18px);
+        opacity:0.7;
+        
+    }
+
+}
+
+@media(min-width:1200px){
+    body{
+        max-width:1440px; 
+    }
+    .container{
+        width:1110px;
+        grid-template-columns: repeat(4,1fr);
+        /*grid-template-rows:rem(282px) rem(266px);*/
+        grid-template-areas: 'daniel daniel jonathan kira'
+                           'jeanette patrick patrick kira';
+        margin-top:rem(164px);
+    }
+    .card{
+        padding:rem(25px) rem(32px) rem(20px) rem(31px);
+        &:nth-child(1){
+            grid-area:daniel;
+            background-position:top 0 right 82px;
+        }
+        &:nth-child(2){
+            grid-area:jonathan;
+        }
+        &:nth-child(3){
+            grid-area:jeanette;
+            .review-header{
+                margin-right:1rem;
+            }
+            .review-body{
+                margin-top:1.5rem;
+            }
+        }
+        &:nth-child(4){
+            grid-area:patrick;
+            .review-body{
+                margin-top:1.5rem;
+            }
+        }
+        &:nth-child(5){
+            grid-area:kira;
+            .review-body{
+                margin-top:1.5rem;
+            }
+        }
+    }
+    .review-header{
+        margin-top:1rem;
+        margin-bottom:1rem;
+    }
+    .review-body{
+        margin-top:0rem;
+    }
+}
